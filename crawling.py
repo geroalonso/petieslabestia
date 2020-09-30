@@ -10,7 +10,7 @@ result = {}
 def crawling(url):
 	chrome_options = Options()  
 	chrome_options.add_argument("--headless") 
-	driver = webdriver.Chrome(ChromeDriverManager().install()) #set the search engine
+	driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options) #set the search engine
 	driver.get(url)
 	doc = driver.page_source
 	emails = []
@@ -27,7 +27,7 @@ def crawling(url):
 			chrome_options = Options()  
 			chrome_options.add_argument("--headless") 
 			url = href
-			driver = webdriver.Chrome(ChromeDriverManager().install()) #set the search engine
+			driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options) #set the search engine
 			driver.get(url)
 			doc = driver.page_source
 			emails.extend(list(set(re.findall(r'[\w\.-]+@+[\w\.-]+', doc)))) #regex to search emails
