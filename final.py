@@ -56,7 +56,7 @@ def localurlchecker(trial, url):
     4) we compare both netlocs, if they are true, they belong to the same site and the function returns True.
     5) in the other cases it returns false '''
 
-def crawling(baseurl):
+def crawling(baseurl, emaillimit):
   graph = {}
   visited = []
   queue = []
@@ -64,21 +64,24 @@ def crawling(baseurl):
   queue.append(baseurl)
 
   while queue:
-    try:
-      s = queue.pop(0)
-      openscrape(s)
-      graph[s] = openscrape(s)
-      for hijo in graph[s]:
-        url_local = localurlchecker(hijo, baseurl)
-        if hijo not in visited and url_local == True :
-          visited.append(hijo)
-          queue.append(hijo)
-    except:
-      continue
+    if len(emails) < emaillimit:
+      try:
+        s = queue.pop(0)
+        openscrape(s)
+        graph[s] = openscrape(s)
+        for hijo in graph[s]:
+          url_local = localurlchecker(hijo, baseurl)
+          if hijo not in visited and url_local == True :
+            visited.append(hijo)
+            queue.append(hijo)
+      except:
+        continue
+    else:
+      break
   print(emails)
 
 
 
-crawling('https://eheys.com.ar')
+crawling('https://eheys.com.ar',1 )
 
 
