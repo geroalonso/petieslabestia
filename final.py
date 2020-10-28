@@ -68,6 +68,7 @@ def crawling(baseurl, emaillimit):
       try:
         s = queue.pop(0)
         openscrape(s)
+        print(s)
         graph[s] = openscrape(s)
         for hijo in graph[s]:
           url_local = localurlchecker(hijo, baseurl)
@@ -82,6 +83,10 @@ def crawling(baseurl, emaillimit):
 
 
 
-crawling('https://eheys.com.ar',1 )
+
+
+
+
+crawling('https://www.marcusmillichap.com',100)
 
 
