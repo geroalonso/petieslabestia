@@ -10,6 +10,7 @@ urlparse = "*"
 urllib-parse = "*"
 twilio-rest = "*"
 urlopen = "*"
+scrapy = "*"
 
 [requires]
 python_version = "3.8"
