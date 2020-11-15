@@ -7,12 +7,12 @@ from bs4 import BeautifulSoup
 
 emails  = []
 
-page = requests.get('http://bathforliving.com')
+page = requests.get('https://www.dentalplanet.com')
 source = page.text
 soup = BeautifulSoup(source, "html.parser")
 
 for a in soup.find_all('a', href=True):
     print (a['href'])
-print(links)
+
 
 
